@@ -1,19 +1,25 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using KServices.Auth;
+using KServices.Core.Domain.Core.Windsor;
+using KServices.Core.Domain.Services;
 using KServices.Error;
-using Microsoft.AspNet.Identity;
+using KServices.Locator;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using KServices.Providers;
-using KServices.Services.User;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Owin.Security.Jwt;
 using Needles48.Web.Auth;
 using Newtonsoft.Json.Serialization;
+using JwtFormat = KServices.Auth.JwtFormat;
 
 namespace KServices
 {
@@ -22,6 +28,8 @@ namespace KServices
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
+
+        private static readonly IWindsorContainer _container = WebIoC.Container;
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
@@ -48,22 +56,35 @@ namespace KServices
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            config.DependencyResolver = new UnityDependencyResolver(container);
+            RegisterDependencyResolver(config);
+           
+        }
+
+        private void RegisterDependencyResolver(HttpConfiguration config)
+        {
+            _container.Register(
+             Classes
+                 .FromThisAssembly()
+                 .BasedOn<ApiController>()
+                 .LifestyleScoped()
+             );
+
+            config.DependencyResolver = new CastleDependencyResolver(_container);
         }
 
         private void ConfigureOAuthTokenGeneration(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-
-            var provider = new NeedlesAuthProvider(() => container.Resolve<IStaffBusinessService>());
-            var OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            var provider = new KAuthProvider(_container.Resolve<IAuthentication>());
+            //var provider = new KAuthProvider(() => container.Resolve<IStaffBusinessService>());
+            var OAuthServerOptions = new OAuthAuthorizationServerOptions
             {
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = provider,
-                AccessTokenFormat = new NeedlesJwtFormat(NeedlesAuthProvider.Issuer)
+                AccessTokenFormat = new JwtFormat(KAuthProvider.Issuer)
             };
 
             // OAuth 2.0 Bearer Access Token Generation
@@ -72,8 +93,8 @@ namespace KServices
 
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
-            var provider = new NeedlesAuthConsumer(() => container.Resolve<IStaffBusinessService>());
-            var issuer = NeedlesAuthProvider.Issuer;
+            var provider = new KAuthConsumer(_container.Resolve<IAuthentication>());
+            var issuer = KAuthProvider.Issuer;
             string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
 

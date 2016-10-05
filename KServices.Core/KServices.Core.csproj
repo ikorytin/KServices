@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KServices.Core</RootNamespace>
     <AssemblyName>KServices.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,11 +31,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,8 +68,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Core\Data\Finder.cs" />
+    <Compile Include="Domain\Core\Data\FinderExtensions.cs" />
+    <Compile Include="Domain\Core\Data\IFinder.cs" />
+    <Compile Include="Domain\Core\Data\IRepository.cs" />
+    <Compile Include="Domain\Core\Data\ITransactionManager.cs" />
+    <Compile Include="Domain\Core\Data\MemoryRepository.cs" />
+    <Compile Include="Domain\Core\Data\RepositoryBase.cs" />
+    <Compile Include="Domain\Core\Data\Specifications\CommonSpecifications.cs" />
+    <Compile Include="Domain\Core\Extensions\CollectionExtensions.cs" />
+    <Compile Include="Domain\Core\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Domain\Core\Extensions\QueryableExtensions.cs" />
+    <Compile Include="Domain\Core\Extensions\TypeExtensions.cs" />
+    <Compile Include="Domain\Core\Extension\Check.cs" />
+    <Compile Include="Domain\Core\Extension\Reflector.cs" />
+    <Compile Include="Domain\Core\Model\Entities\BaseEntity.cs" />
+    <Compile Include="Domain\Core\Model\Entities\FileStorage.cs" />
+    <Compile Include="Domain\Core\Model\Entities\IEntity.cs" />
+    <Compile Include="Domain\Core\Model\Entities\IHierarchyEntity.cs" />
+    <Compile Include="Domain\Core\Model\Entities\ISimpleEntity.cs" />
+    <Compile Include="Domain\Core\Model\Entities\NameEntity.cs" />
+    <Compile Include="Domain\Core\Model\Entities\SimpleEntity.cs" />
+    <Compile Include="Domain\Core\Specification\Binary\AndSpecification.cs" />
+    <Compile Include="Domain\Core\Specification\Binary\BinarySpecification.cs" />
+    <Compile Include="Domain\Core\Specification\Binary\OrSpecification.cs" />
+    <Compile Include="Domain\Core\Specification\ISpecificationT.cs" />
+    <Compile Include="Domain\Core\Specification\ParameterRebinder.cs" />
+    <Compile Include="Domain\Core\Specification\SingleSpecification.cs" />
+    <Compile Include="Domain\Core\Specification\Specification.cs" />
+    <Compile Include="Domain\Core\Specification\Unary\NotSpecification.cs" />
+    <Compile Include="Domain\Core\Windsor\CastleDependencyResolver.cs" />
+    <Compile Include="Domain\Core\Windsor\CastleDependencyScope.cs" />
+    <Compile Include="Domain\Core\Windsor\LifeStileGetAndForgot\InstantiateAndForgetIt.cs" />
+    <Compile Include="Domain\Core\Windsor\LifeStileGetAndForgot\LifecycledComponentsReleasePolicy.cs" />
+    <Compile Include="Domain\Core\Windsor\WindsorContainerExtensions.cs" />
+    <Compile Include="Domain\Core\Windsor\WindsorDependencyResolver.cs" />
     <Compile Include="Domain\Data\Entities\Account.cs" />
-    <Compile Include="Domain\Data\Entities\IEntity.cs" />
+    <Compile Include="Domain\Data\Specification\AccountSpecifications.cs" />
+    <Compile Include="Domain\Services\IAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
