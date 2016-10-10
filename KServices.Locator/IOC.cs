@@ -5,6 +5,7 @@ using Castle.Windsor;
 using KServices.Core.Domain.Core.Windsor;
 using KServices.Data;
 using KServices.Data.Mappings.Mapper;
+using KServices.Services;
 using NHibernate;
 
 namespace KServices.Locator
@@ -70,7 +71,7 @@ namespace KServices.Locator
             container.RegisterNHibernateSession();
 
             //// Register all service from email core
-            //container.RegisterServices(Assembly.GetAssembly(typeof(DefaultEmailSender)));
+            container.RegisterServices(Assembly.GetAssembly(typeof(Authentication)));
 
             // Register core data access objects
             container.RegisterServices(Assembly.GetAssembly(typeof(DomainMapper)));

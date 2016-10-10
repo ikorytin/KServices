@@ -18,11 +18,11 @@ C:\projects\other\KServices\KServices.Locator\bin\Debug\KServices.Data.pdb
 C:\projects\other\KServices\KServices.Locator\bin\Debug\Castle.Core.xml
 C:\projects\other\KServices\KServices.Locator\bin\Debug\Castle.Facilities.FactorySupport.xml
 C:\projects\other\KServices\KServices.Locator\bin\Debug\Castle.Windsor.xml
-C:\projects\other\KServices\KServices.Locator\bin\Debug\Iesi.Collections.xml
-C:\projects\other\KServices\KServices.Locator\bin\Debug\NHibernate.xml
 C:\projects\other\KServices\KServices.Locator\bin\Debug\System.Web.Http.xml
 C:\projects\other\KServices\KServices.Locator\bin\Debug\System.Net.Http.Formatting.xml
 C:\projects\other\KServices\KServices.Locator\bin\Debug\Newtonsoft.Json.xml
 C:\projects\other\KServices\KServices.Locator\obj\Debug\KServices.Locator.csprojResolveAssemblyReference.cache
 C:\projects\other\KServices\KServices.Locator\obj\Debug\KServices.Locator.dll
 C:\projects\other\KServices\KServices.Locator\obj\Debug\KServices.Locator.pdb
+C:\projects\other\KServices\KServices.Locator\bin\Debug\KServices.Services.dll
+C:\projects\other\KServices\KServices.Locator\bin\Debug\KServices.Services.pdb

@@ -12,8 +12,6 @@ C:\projects\other\KServices\KServices.Data\bin\Debug\System.Net.Http.Formatting.
 C:\projects\other\KServices\KServices.Data\bin\Debug\Newtonsoft.Json.dll
 C:\projects\other\KServices\KServices.Data\bin\Debug\Castle.Core.dll
 C:\projects\other\KServices\KServices.Data\bin\Debug\KServices.Core.pdb
-C:\projects\other\KServices\KServices.Data\bin\Debug\Iesi.Collections.xml
-C:\projects\other\KServices\KServices.Data\bin\Debug\NHibernate.xml
 C:\projects\other\KServices\KServices.Data\bin\Debug\System.Web.Http.xml
 C:\projects\other\KServices\KServices.Data\bin\Debug\Castle.Windsor.xml
 C:\projects\other\KServices\KServices.Data\bin\Debug\System.Net.Http.Formatting.xml

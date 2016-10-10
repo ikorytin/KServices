@@ -93,3 +93,5 @@ C:\projects\other\KServices\KServices\bin\Castle.Facilities.FactorySupport.xml
 C:\projects\other\KServices\KServices\obj\Debug\KServices.csprojResolveAssemblyReference.cache
 C:\projects\other\KServices\KServices\obj\Debug\KServices.dll
 C:\projects\other\KServices\KServices\obj\Debug\KServices.pdb
+C:\projects\other\KServices\KServices\bin\KServices.Services.dll
+C:\projects\other\KServices\KServices\bin\KServices.Services.pdb

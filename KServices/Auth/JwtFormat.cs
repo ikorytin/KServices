@@ -9,7 +9,7 @@ namespace KServices.Auth
 {
     public class JwtFormat : ISecureDataFormat<AuthenticationTicket>
     {
-        private readonly string _issuer = string.Empty;
+        private readonly string _issuer;
 
         public JwtFormat(string issuer)
         {

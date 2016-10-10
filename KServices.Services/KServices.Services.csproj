@@ -48,10 +48,9 @@
       <Project>{dd315c9f-25ac-486f-bd8d-1c81090bee10}</Project>
       <Name>KServices.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KServices.Locator\KServices.Locator.csproj">
-      <Project>{40550cbc-7d6e-4cd6-ac91-800c75c6f894}</Project>
-      <Name>KServices.Locator</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
