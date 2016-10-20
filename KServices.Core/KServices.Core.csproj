@@ -76,6 +76,7 @@
     <Compile Include="Domain\Core\Data\MemoryRepository.cs" />
     <Compile Include="Domain\Core\Data\RepositoryBase.cs" />
     <Compile Include="Domain\Core\Data\Specifications\CommonSpecifications.cs" />
+    <Compile Include="Domain\Core\Exceptions\BadParameterException.cs" />
     <Compile Include="Domain\Core\Extensions\CollectionExtensions.cs" />
     <Compile Include="Domain\Core\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Domain\Core\Extensions\QueryableExtensions.cs" />
