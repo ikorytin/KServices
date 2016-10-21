@@ -14,14 +14,15 @@ namespace KServices.Controllers
     public class LoginController : BaseApiController
     {
         private readonly IAuthentication _authenticationService;
+
         public LoginController(IAuthentication authenticationService)
         {
 
-            this._authenticationService = authenticationService;
+            _authenticationService = authenticationService;
         }
 
         [Route("")]
-        public string Post([FromBody]LoginModel login)
+        public string Post([FromBody] LoginModel login)
         {
             if (string.IsNullOrEmpty(login.UserName))
             {
@@ -31,7 +32,7 @@ namespace KServices.Controllers
             if (string.IsNullOrEmpty(login.Password))
             {
                 throw new BadParameterException("Needles password is required.");
-            } 
+            }
 
             var accountExist = _authenticationService.Authenticate(login.UserName, login.Password);
             if (!accountExist)
@@ -50,3 +51,4 @@ namespace KServices.Controllers
             return new JwtFormat(KAuthProvider.Issuer).Protect(ticket);
         }
     }
+}
