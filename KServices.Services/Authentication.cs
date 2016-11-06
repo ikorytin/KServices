@@ -1,5 +1,6 @@
 ﻿using System;
 using KServices.Core.Domain.Data.Entities;
+using KServices.Core.Domain.Data.Repositories;
 using KServices.Core.Domain.Data.Specification;
 using KServices.Core.Domain.Services;
 using MedTeam.Data.Core.Domain.Data;
@@ -10,13 +11,17 @@ namespace KServices.Services
     {
         private readonly IRepository<Account> _accountRepository;
 
-        public Authentication(IRepository<Account> accountRepository)
+       private readonly ILoginRepository _loginRepository;
+
+        public Authentication(IRepository<Account> accountRepository, ILoginRepository loginRepository)
         {
             _accountRepository = accountRepository;
+            _loginRepository = loginRepository;
         }
 
-        public bool Authenticate(string account, string passwordHesh)
+       public bool Authenticate(string account, string passwordHesh)
         {
+            
            var item = _accountRepository.Find.One(AccountSpecifications.ByAccount(account).And(AccountSpecifications.ByPassword(passwordHesh)));
             return true; // item != null;
         }

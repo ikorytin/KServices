@@ -44,6 +44,7 @@
       <HintPath>..\dlls\NHibernate\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +59,10 @@
     <Compile Include="Mappings\Mapper\DomainMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\SqlRepository\BaseRepository.cs" />
+    <Compile Include="Repository\SqlRepository\EntityRepository.cs" />
+    <Compile Include="Repository\SqlRepository\PersonRepository.cs" />
+    <Compile Include="Repository\SqlRepository\LoginRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -66,6 +71,10 @@
     <ProjectReference Include="..\KServices.Core\KServices.Core.csproj">
       <Project>{DD315C9F-25AC-486F-BD8D-1C81090BEE10}</Project>
       <Name>KServices.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\shared\FluentAdo.SqlServer\FluentAdo.SqlServer.csproj">
+      <Project>{47453AEA-621B-41F8-868D-AE3B1EEACF03}</Project>
+      <Name>FluentAdo.SqlServer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

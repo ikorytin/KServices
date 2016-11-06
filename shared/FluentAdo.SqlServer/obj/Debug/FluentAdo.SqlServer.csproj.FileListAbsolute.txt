@@ -1,0 +1,7 @@
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\bin\Debug\FluentAdo.SqlServer.dll
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\bin\Debug\FluentAdo.SqlServer.pdb
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\bin\Debug\NLog.dll
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\bin\Debug\NLog.xml
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\obj\Debug\FluentAdo.SqlServer.csprojResolveAssemblyReference.cache
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\obj\Debug\FluentAdo.SqlServer.dll
+C:\projects\svn\trunk\Shared\FluentAdo.SqlServer\obj\Debug\FluentAdo.SqlServer.pdb
